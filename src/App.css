@@ -1,5 +1,16 @@
+:root {
+  --font-display: 'Cormorant', serif;
+  --font-display-sc: 'Cormorant SC', serif;
+  --font-signature: 'Mrs Saint Delafield', cursive;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    background-color: rgb(231, 231, 231);
+
 }
 
 .App-logo {

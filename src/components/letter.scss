@@ -1,0 +1,158 @@
+.letter-container {
+  position: relative;
+  width: 1148px;
+  height: 1485px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: antiquewhite;
+  overflow: hidden;
+  font-family: var(--font-display);
+}
+
+.border {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  height: calc(100% - 200px);
+  width: calc(100% - 100px);
+  border: 1px solid #9c965e;
+}
+
+.letter {
+  &__header {
+    width: 100%;
+    height: 224px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #fffcec;
+    svg {
+      z-index: 9;
+      margin-top: 25px;
+      background-color: #fffcec;
+    }
+  }
+  &__content {
+    z-index: 99;
+    height: 975px;
+    width: calc(100% - 360px);
+    margin-top: 70px;
+    color: #272727;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .salutation {
+      margin-bottom: 25px;
+      outline: none !important;
+      border: 1px solid transparent !important;
+      font-family: var(--font-display);
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #9c965e;
+      &::placeholder {
+        color: #9c965e;
+      }
+      &:active,
+      &:focus,
+      &:focus-within {
+        border: 1px solid #9c965e !important;
+      }
+    }
+    .body {
+      font: unset !important;
+      border: none !important;
+      outline: none !important;
+      width: 100%;
+      padding-bottom: 25px !important;
+      text-align: left;
+      font-size: 22px !important;
+      line-height: 150% !important;
+      min-height: 585px;
+      overflow: hidden;
+      &::-webkit-resizer {
+        // display: none;
+      }
+      &:active,
+      &:focus,
+      &:focus-within {
+        outline: thin solid #9c965e9a !important;
+      }
+    }
+  }
+  &__end {
+    text-align: left;
+
+    .closing {
+      margin: 25px 0;
+      font-size: 27px;
+      font-weight: bold;
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      outline: none !important;
+      border: 1px solid transparent !important;
+      &::placeholder {
+        color: #9c965e;
+      }
+      &:active,
+      &:focus,
+      &:focus-within {
+        border: 1px solid #9c965e !important;
+      }
+    }
+    .signature {
+      padding-top: 25px;
+      font-size: 65px;
+      font-family: var(--font-signature);
+    }
+    .printed-signature {
+      h4 {
+        margin: 0;
+        padding-bottom: 15px;
+        color: #9c965e;
+        font-size: 27px;
+        font-weight: 200;
+        letter-spacing: 1px;
+      }
+      p {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: 1px;
+        color: lightslategray;
+      }
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    color: #272727;
+    width: 830px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-display);
+    letter-spacing: 2px;
+  }
+
+  &__bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #9c965e;
+  }
+}

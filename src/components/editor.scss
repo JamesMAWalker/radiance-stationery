@@ -1,0 +1,24 @@
+.editor-container {
+  margin: 10rem;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button__generate {
+  padding: 2rem 5rem;
+  margin: 1rem;
+  background-color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: lightcoral;
+  border: 3px solid lightcoral ;
+  &:hover {
+    color: white;
+    background-color: rgba(240, 128, 128, 0.673);
+  }
+}
