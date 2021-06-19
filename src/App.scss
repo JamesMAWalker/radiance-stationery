@@ -2,9 +2,39 @@
   --font-display: 'Cormorant', serif;
   --font-display-sc: 'Cormorant SC', serif;
   --font-signature: 'Mrs Saint Delafield', cursive;
+  --font-sans: 'Open Sans', sans-serif;
 
-  --primary: #FFFCEC;
-  --accent: #9C965E;
+  --primary: #fffcec;
+  --accent: #9c965e;
+  --white: #ffffff;
+  --text: #3b3b3b;
+
+  --spaced: 5px;
+  --xspaced: 5px;
+
+  --side-margin: 120px;
+  --vert-margin: 70px;
+}
+
+html {
+  font-size: 62.5%;
+  color: var(--text);
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+font-family: var(--font-sans);
+font-weight: 200;
+letter-spacing: 1px;
+  &::placeholder {
+  }
+  &:active,
+  &:focus,
+  &:focus-within {
+    border: 1px solid #9c965e !important;
+  }
 }
 
 .App {
@@ -12,8 +42,7 @@
   /* display: flex; */
   align-items: center;
   justify-content: center;
-    background-color: rgb(231, 231, 231);
-
+  background-color: rgb(231, 231, 231);
 }
 
 /* .App-logo {

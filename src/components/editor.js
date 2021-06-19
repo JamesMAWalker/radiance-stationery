@@ -27,7 +27,7 @@ export const DocumentEditor = ({ children, pageCount, setPageCount, docType }) =
         onClick={handlePrint}
         className='button__generate'
       >
-        Generate PDF
+        Generate {docType}
       </button>
       {docType === 'Letter' && (
         <div className='page-count'>
