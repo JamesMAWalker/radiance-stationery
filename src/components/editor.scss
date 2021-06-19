@@ -1,7 +1,7 @@
 .editor-container {
-  margin: 10rem;
-  height: 100%;
-  width: 100%;
+  padding-top: 10rem;
+  min-height: 100%;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,5 +20,21 @@
   &:hover {
     color: white;
     background-color: rgba(240, 128, 128, 0.673);
+  }
+}
+
+.page-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__actions {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  button {
+    
   }
 }
