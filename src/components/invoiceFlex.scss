@@ -123,6 +123,18 @@
     .grandtotal-row {
       font-weight: bold;
     }
+    .deposit-row {
+      position: relative;
+      &::after {
+        position: absolute;
+        content: '';
+        bottom: 2px;
+        left: calc(-1 * var(--space-xl));
+        background-color: var(--primary);
+        height: 2px;
+        width: calc(100% + (2 * var(--space-xl)));
+      }
+    }
     .grandtotal-row {
       font-size: var(--text-lg);
     }

@@ -1,5 +1,5 @@
 import './App.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Route,
   Switch,
@@ -10,6 +10,7 @@ import axios from 'axios'
 import { DocumentEditor } from './components/editor'
 import { Home } from './components/home'
 import { Invoice } from './components/invoice'
+import { InvoiceTable } from './components/invoiceFlex'
 import { Letter } from './components/letter'
 
 // const getUsersData = () => {
@@ -23,6 +24,9 @@ import { Letter } from './components/letter'
 
 function App() {
   const [pageCount, setPageCount] = useState(0)
+  const [rowCount, setRowCount] = useState(1)
+  const [rowCollapsed, setRowCollapsed] = useState(false)
+
   const templateRoutes = [
     {
       path: '/letterhead',
@@ -30,16 +34,20 @@ function App() {
       Component: Letter,
       props: {
         docType: 'Letter',
-        pageCount: pageCount,
-        setPageCount: setPageCount,
+        pageCount,
+        setPageCount,
       },
     },
     {
       path: '/invoice',
       name: 'Invoice',
-      Component: Invoice,
+      Component: InvoiceTable,
       props: {
         docType: 'Invoice',
+        rowCount,
+        setRowCount,
+        rowCollapsed,
+        setRowCollapsed
       },
     },
   ]

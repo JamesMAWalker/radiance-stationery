@@ -1,23 +1,49 @@
 :root {
+  // fonts
   --font-display: 'Cormorant', serif;
   --font-display-sc: 'Cormorant SC', serif;
   --font-signature: 'Mrs Saint Delafield', cursive;
   --font-sans: 'Open Sans', sans-serif;
 
+  // font sizes
+  --text-md: 18px;
+  --text-lg: 22px;
+
+
+  // colors
   --primary: #fffcec;
   --accent: #9c965e;
   --white: #ffffff;
   --text: #3b3b3b;
 
-  --spaced: 5px;
-  --xspaced: 5px;
+  // letter spacing
+  --xs-spaced: .5px;
+  --sm-spaced: 1px;
+  --spaced: 2px;
+  --x-spaced: 5px;
 
+  // document spacing
   --side-margin: 120px;
   --vert-margin: 70px;
+  --div-margin: 30px;
+
+  // utility spacing
+  --space-xs: 2px;
+  --space-sm: 4px;
+  --space-md: 8px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+
+  // invoice specific spacing
+  --row-height: var(--space-4xl);
+  --row-height-collapsed: var(--space-3xl);
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 16px;
   color: var(--text);
 }
 
@@ -25,9 +51,9 @@ input {
   background-color: transparent;
   border: none;
   outline: none;
-font-family: var(--font-sans);
-font-weight: 200;
-letter-spacing: 1px;
+  font-family: var(--font-sans);
+  font-weight: 200;
+  letter-spacing: 1px;
   &::placeholder {
   }
   &:active,
