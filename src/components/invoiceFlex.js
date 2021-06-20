@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { LogoFL } from '../assets/LogoFL';
+import { LogoFL } from '../assets/LogoFL'
 
-import './invoice.scss';
+import './invoiceFlex.scss'
 
-export const Invoice = ({ printRef, }) => {
+export const InvoiceTable = ({ printRef }) => {
   const invDetail = {
     name: 'Michelle Smith',
     addressLOne: '1234 Placeholder wy.',
     addressLTwo: 'Pleasanton, CA 12345',
     number: '555 321 1234',
   }
-  const paymentContent = 
-  `Cash, or check made payable to 
+  const paymentContent = `Cash, or check made payable to 
 “Radiance Photography Studio”.`
 
   useEffect(() => {
-    const qtyVal = parseInt(
-      document
-        .querySelector('.qty')
-        .getAttribute('placeholder'),
-        10
-    )
-    console.log('qtyVal data type: ', typeof qtyVal);
-    
+    // const qtyVal = parseInt(
+    //   document
+    //     .querySelector('.qty')
+    //     .getAttribute('placeholder'),
+    //   10
+    // )
+    // console.log('qtyVal data type: ', typeof qtyVal)
   }, [])
 
-  const [numRows, setNumRows] = useState(2)
+  const [numRows, setNumRows] = useState(4)
 
-  const rows = Array.from({ length: numRows}, () => ' ')
+  const rows = Array.from({ length: numRows }, () => ' ')
 
   return (
     <main ref={printRef}>
@@ -86,27 +84,34 @@ export const Invoice = ({ printRef, }) => {
           </div>
         </div>
         <div className='invoice-body'>
-        
-        
           <div className='invoice-body__grid'>
             <div className='row header-row'>
-              <span style={{ textAlign: 'left' }}>Qty</span>
-              <span>Products & Services</span>
-              <span>Price</span>
-              <span>Discount</span>
-              <span style={{ textAlign: 'right' }}>
+              <span
+                className='qty'
+                style={{ textAlign: 'left' }}
+              >
+                Qty
+              </span>
+              <span className='prodServ'>
+                Products & Services
+              </span>
+              <span className='price'>Price</span>
+              <span className='discount'>Discount</span>
+              <span
+                className='total'
+                style={{ textAlign: 'right' }}
+              >
                 Total
               </span>
             </div>
             {rows.map((row) => {
-              
               return (
                 <div className='row'>
                   <input
                     type='text'
                     placeholder='1'
-                    // value={1}
                     className='qty'
+                    style={{ textAlign: 'left' }}
                   />
                   <input
                     type='text'
@@ -127,6 +132,7 @@ export const Invoice = ({ printRef, }) => {
                     type='text'
                     placeholder='$1000'
                     className='total'
+                    style={{ textAlign: 'right' }}
                   />
                 </div>
               )
@@ -158,7 +164,9 @@ export const Invoice = ({ printRef, }) => {
             <div className='row grandtotal-row'>
               <span className='empty'> </span>
               <span className='empty'> </span>
-              <span className='grandtotal'>GRAND TOTAL</span>
+              <span className='grandtotal'>
+                GRAND TOTAL
+              </span>
               <span className='empty'> </span>
               <span
                 style={{ textAlign: 'right' }}
@@ -169,10 +177,30 @@ export const Invoice = ({ printRef, }) => {
             </div>
           </div>
         </div>
-        <div className="invoice-close">
-          <h3 className="invoice-close__header">Payment Methods</h3>
-          <textarea className="invoice-close__content" placeholder={paymentContent} />
+        <div className='invoice-close'>
+          <h3 className='invoice-close__header'>
+            Payment Methods
+          </h3>
+          <textarea
+            className='invoice-close__content'
+            placeholder={paymentContent}
+          />
         </div>
+        <footer className='footer'>
+          <div className='footer__content'>
+            <div className='number'>310 | 268 | 8222</div>
+            {/* <Divider /> */}
+            <div className='email'>
+              info@radiancephotographystudio.com
+            </div>
+            {/* <Divider /> */}
+            <div className='address'>
+              1643 Westwood Blvd <br /> Los Angleles, CA
+              90025
+            </div>
+          </div>
+          <div className='footer__bottom-bar' />
+        </footer>
       </div>
     </main>
   )

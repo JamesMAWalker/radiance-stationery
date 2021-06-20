@@ -1,78 +1,154 @@
-.invoice-container {
-  height: 1485px;
-  width: 1148px;
-  background-color: var(--white);
-}
+// .invoice-container {
+//   height: 1485px;
+//   width: 1148px;
+//   background-color: var(--white);
+// }
 
-.invoice-top {
-  height: 573px;
-  width: calc(100% - (2 * var(--side-margin)));
-  padding: 0 var(--side-margin);
-  background-color: var(--primary);
-  font-family: var(--font-display);
+// .invoice-top {
+//   height: 573px;
+//   width: calc(100% - (2 * var(--side-margin)));
+//   padding: 0 var(--side-margin);
+//   background-color: var(--primary);
+//   font-family: var(--font-display);
 
-  &__header-area {
-    padding-top: var(--vert-margin);
-    margin-bottom: var(--side-margin);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
+//   &__header-area {
+//     padding-top: var(--vert-margin);
+//     margin-bottom: var(--side-margin);
+//     display: flex;
+//     align-items: flex-start;
+//     justify-content: space-between;
+//   }
 
-  &__logo-wrap {
-    width: 250px;
-  }
+//   &__logo-wrap {
+//     width: 250px;
+//   }
 
-  &__header {
-    font-family: var(--font-display);
-    font-size: 70px;
-    font-weight: 600;
-    letter-spacing: var(--xspaced);
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0;
-    margin-top: -15px;
-  }
+//   &__header {
+//     font-family: var(--font-display);
+//     font-size: 70px;
+//     font-weight: 600;
+//     letter-spacing: var(--x-spaced);
+//     text-transform: uppercase;
+//     color: var(--accent);
+//     margin: 0;
+//     margin-top: -15px;
+//   }
 
-  &__info-area {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    .dates {
-      & > * {
-        height: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        font-size: 18px;
-        h4 {
-          margin: 0;
-          padding: 0;
-          letter-spacing: 1px;
-        }
-        // input {
-        //   background-color: transparent;
-        //   border: none;
-        //   outline: none;
-        //   &::placeholder {
-        //     font-family: var(--font-sans);
-        //     font-weight: 200;
-        //     letter-spacing: 1px;
-        //   }
-        // }
-      }
-      &__invoice {
-        margin-bottom: 40px;
-      }
-    }
-    .invoice-detail {
-      &__invoicee {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
-    }
-  }
-}
+//   &__info-area {
+//     display: flex;
+//     align-items: flex-start;
+//     justify-content: space-between;
+//     font-size: 18px;
+//     h4 {
+//       margin: 0;
+//       padding: 0;
+//       letter-spacing: 1px;
+//     }
+//     .dates {
+//       & > * {
+//         height: 40px;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: flex-start;
+//         justify-content: flex-start;
+//       }
+//       &__invoice {
+//         margin-bottom: var(--div-margin);
+//       }
+//     }
+//     .invoice-detail {
+//       & > * {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: flex-end;
+//         justify-content: flex-end;
+//         text-align: right;
+//         input {
+//           text-align: right;
+//           padding-right: 1px;
+//         }
+//       }
+//       &__invoicee {
+//         margin-bottom: var(--div-margin);
+//       }
+//     }
+//   }
+// }
+
+// .invoice-body {
+//   margin-top: var(--vert-margin);
+//   width: calc(1148px - (2 * var(--side-margin)));
+//   padding: 0 var(--side-margin);
+
+//   &__grid {
+//     height: 100%;
+//     width: 100%;
+//     display: grid;
+//     font-size: 18px;
+//     .row {
+//       display: grid;
+//       gap: 1px;
+//       padding: 0 5px;
+//       grid-template-columns: 0.1fr 0.39fr 0.17fr 0.17fr 0.17fr;
+//       height: var(--row-height);
+//       align-items: center;
+//       input {
+//         text-align: center;
+//         width: 100%;
+//         &.qty {
+//           text-align: left;
+//         }
+//         &.total {
+//           text-align: right;
+//         }
+//       }
+//     }
+//     .header-row {
+//       position: relative;
+//       font-family: var(--font-display);
+//       font-weight: 700;
+//       text-transform: uppercase;
+//       &::after {
+//         position: absolute;
+//         content: '';
+//         bottom: 2px;
+//         left: calc(-1 * var(--space-xl));
+//         background-color: var(--primary);
+//         height: 2px;
+//         width: calc(100% + (2 * var(--space-xl)));
+//       }
+//     }
+//     .grandtotal-row {
+//       font-size: var(--text-lg);
+//       font-weight: 700;
+//     }
+//   }
+// }
+
+// .invoice-close {
+//   width: calc(100% - (2 * var(--side-margin)));
+//   padding: 0 var(--side-margin);
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   justify-content: space-evenly;
+//   &__header {
+//     font-family: var(--font-display);
+//     font-weight: 700;
+//     font-style: var(--text-lg);
+//     letter-spacing: var(--sm-spaced);
+//     text-transform: uppercase;
+//   }
+//   &__content {
+//     width: 325px;
+//     min-height: 85px;
+//     font-family: var(--font-sans);
+//     letter-spacing: var(--xs-spaced);
+//     font: unset !important;
+//     border: none !important;
+//     outline: none !important;
+//     &::-webkit-resizer {
+//       display: none;
+//     }
+//   }
+// }

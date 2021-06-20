@@ -1,0 +1,190 @@
+.invoice-container {
+  position: relative;
+  height: 1485px;
+  width: 1148px;
+  background-color: var(--white);
+}
+
+.invoice-top {
+  height: 573px;
+  width: calc(100% - (2 * var(--side-margin)));
+  padding: 0 var(--side-margin);
+  background-color: var(--primary);
+  font-family: var(--font-display);
+
+  &__header-area {
+    padding-top: var(--vert-margin);
+    margin-bottom: var(--side-margin);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__logo-wrap {
+    width: 250px;
+  }
+
+  &__header {
+    font-family: var(--font-display);
+    font-size: 70px;
+    font-weight: 600;
+    letter-spacing: var(--x-spaced);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+    margin-top: -15px;
+  }
+
+  &__info-area {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 18px;
+    h4 {
+      margin: 0;
+      padding: 0;
+      letter-spacing: 1px;
+    }
+    .dates {
+      & > * {
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      &__invoice {
+        margin-bottom: var(--div-margin);
+      }
+    }
+    .invoice-detail {
+      & > * {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        text-align: right;
+        input {
+          text-align: right;
+          padding-right: 1px;
+        }
+      }
+      &__invoicee {
+        margin-bottom: var(--div-margin);
+      }
+    }
+  }
+}
+
+.invoice-body {
+  margin-top: var(--vert-margin);
+  width: calc(1148px - (2 * var(--side-margin)));
+  padding: 0 var(--side-margin);
+
+  &__grid {
+    // background-color: lightskyblue;
+    .row {
+      height: var(--row-height);
+      padding: 0 var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      & > * {
+        width: 17%;
+      }
+      :nth-child(1) {
+        width: 10%;
+      }
+      :nth-child(2) {
+        width: 39%;
+      }
+      input {
+        text-align: center;
+      }
+    }
+    .header-row {
+      position: relative;
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      &::after {
+        position: absolute;
+        content: '';
+        bottom: 2px;
+        left: calc(-1 * var(--space-xl));
+        background-color: var(--primary);
+        height: 2px;
+        width: calc(100% + (2 * var(--space-xl)));
+      }
+    }
+    .subtotal-row,
+    .deposit-row,
+    .grandtotal-row {
+      font-weight: bold;
+    }
+    .grandtotal-row {
+      font-size: var(--text-lg);
+    }
+  }
+}
+
+.invoice-close {
+  width: calc(100% - (2 * var(--side-margin)));
+  padding: 0 var(--side-margin);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  &__header {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: var(--text-lg);
+    letter-spacing: var(--sm-spaced);
+    text-transform: uppercase;
+  }
+  &__content {
+    width: 325px;
+    min-height: 85px;
+    font-family: var(--font-sans);
+    letter-spacing: var(--xs-spaced);
+    font: unset !important;
+    border: none !important;
+    outline: none !important;
+    &::-webkit-resizer {
+      display: none;
+    }
+  }
+}
+
+
+ .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    color: #272727;
+    width: 950px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-sans);
+    font-weight: 200;
+    letter-spacing: var(--sm-spaced);
+  }
+
+  &__bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: var(--primary);
+  }
+}
+

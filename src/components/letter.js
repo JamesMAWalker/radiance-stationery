@@ -80,22 +80,22 @@ export const Letter = ({ printRef, pageCount }) => {
                 </div>
               </div>
             </div>
-            <footer className='footer'>
-              <div className='footer__content'>
+            <footer className='footer-letter'>
+              <div className='footer-letter__content'>
                 <div className='number'>
                   310 | 268 | 8222
                 </div>
-                <Divider />
+                {/* <Divider /> */}
                 <div className='email'>
                   info@radiancephotographystudio.com
                 </div>
-                <Divider />
+                {/* <Divider /> */}
                 <div className='address'>
                   1643 Westwood Blvd <br /> Los Angleles, CA
                   90025
                 </div>
               </div>
-              <div className='footer__bottom-bar' />
+              <div className='footer-letter__bottom-bar' />
             </footer>
           </div>
         </>
