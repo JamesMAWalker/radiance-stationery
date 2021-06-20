@@ -1,7 +1,7 @@
 .letter-container {
   position: relative;
-  width: 1148px;
-  height: 1485px;
+  height: var(--usl-height);
+  width: var(--usl-width);
   background-color: white;
   display: flex;
   flex-direction: column;

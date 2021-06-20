@@ -1,25 +1,129 @@
 .editor-container {
-  padding-top: 10rem;
-  min-height: 100%;
-  min-width: 100%;
+  position: relative;
+  padding-left: var(--space-2xl);
+  height: 100vh;
+  min-height: 100vh;
+  min-width: var(--usl-width);
+  display: grid;
+  grid-template-columns: var(--usl-width) 1fr;
+  grid-template-rows: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    width: 300vw;
+    height: 300vh;
+    background-color: lightgrey;
+  }
+}
+
+.editor-bg {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: url('https://res.cloudinary.com/jameswalker-work/image/upload/f_auto/q_75/v1624188042/Radiance/plant-BG_iebt6b.png');
+  background-position: top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+.document-scrollwrap {
+  height: 100vh;
+  overflow: visible;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.editor-controls {
+  z-index: 99;
+  top: 0;
+  right: 0;
+  height: calc(100vh + (2 * var(--space-3xl)));
+  min-width: 350px;
+  max-width: calc(100vw - var(--usl-width) - (2 * var(--space-2xl)));
+  margin: var(--space-2xl);
+  background-color: rgba(255, 255, 255, 0.95);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: var(--grey);
+  font-family: var(--font-sans);
+  letter-spacing: var(--spaced);
+
+  .controls-header {
+    margin-bottom: var(--size-btn-lg);
+    padding: var(--space-lg);
+    border-bottom: .5px solid var(--grey-fade-3);
+  }
+
+
+  .add-remove-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 55%;
+    :nth-child(1) {
+      margin-right: var(--space-sm);
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .rows-info {
+    width: 55%;
+    height: var(--size-btn-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .editor-btn {
+    color: var(--grey) !important;
+    font-family: var(--font-sans);
+    letter-spacing: var(--sm-spaced);
+    background-color: transparent;
+    border: 3px solid var(--grey);
+    height: var(--size-btn-md);
+    width: 55%;
+    margin-bottom: var(--space-lg);
+    transition: all .4s;
+    &:hover {
+      background-color: var(--grey-fade-3);
+    }
+    &:disabled {
+      opacity: .2;
+    }
+  }
+
+  .back-link {
+    margin-top: var(--space-4xl);
+    transition: all .2s;
+    &:hover {
+      color: var(--green);
+    }
+  }
 }
 
-.button__generate {
-  padding: 2rem 5rem;
+#generate-pdf,
+.generate-btn,
+.main-btn {
+  height: var(--size-btn-lg);
   margin: 1rem;
-  background-color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+  background-color: transparent;
   text-transform: uppercase;
-  color: lightcoral;
-  border: 3px solid lightcoral ;
+  color: var(--green) !important;
+  border: 3px solid var(--green);
   &:hover {
     color: white;
-    background-color: rgba(240, 128, 128, 0.673);
+    background-color: var(--green-fade-4);
   }
 }
 
@@ -35,6 +139,5 @@
     justify-content: space-evenly;
   }
   button {
-    
   }
 }

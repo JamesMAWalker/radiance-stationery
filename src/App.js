@@ -47,7 +47,7 @@ function App() {
         rowCount,
         setRowCount,
         rowCollapsed,
-        setRowCollapsed
+        setRowCollapsed,
       },
     },
   ]

@@ -1,4 +1,8 @@
 :root {
+  // document dimensions
+  --usl-height: 1485px;
+  --usl-width: 1148px;
+
   // fonts
   --font-display: 'Cormorant', serif;
   --font-display-sc: 'Cormorant SC', serif;
@@ -9,15 +13,23 @@
   --text-md: 18px;
   --text-lg: 22px;
 
-
   // colors
   --primary: #fffcec;
   --accent: #9c965e;
   --white: #ffffff;
   --text: #3b3b3b;
 
+  --grey: rgb(154, 154, 154);
+  --grey-fade-3: rgba(128, 128, 128, .3);
+  --green: rgb(0, 137, 119);
+  --green-fade-4: rgba(0, 137, 119, 0.4);
+
+  --normal: var(--grey);
+  --warning: rgb(251, 171, 9);
+  --alert: rgb(150, 25, 20);
+
   // letter spacing
-  --xs-spaced: .5px;
+  --xs-spaced: 0.5px;
   --sm-spaced: 1px;
   --spaced: 2px;
   --x-spaced: 5px;
@@ -40,11 +52,21 @@
   // invoice specific spacing
   --row-height: var(--space-4xl);
   --row-height-collapsed: var(--space-3xl);
+
+  // sizes
+  --size-btn-sm: 50px; 
+  --size-btn-md: 80px; 
+  --size-btn-lg: 120px; 
+
 }
 
 html {
   font-size: 16px;
   color: var(--text);
+}
+
+button {
+  cursor: pointer;
 }
 
 input {
@@ -55,12 +77,18 @@ input {
   font-weight: 200;
   letter-spacing: 1px;
   &::placeholder {
+    color: var(--text);
   }
   &:active,
   &:focus,
   &:focus-within {
     border: 1px solid #9c965e !important;
   }
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
 }
 
 .App {

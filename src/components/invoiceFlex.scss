@@ -1,7 +1,7 @@
 .invoice-container {
   position: relative;
-  height: 1485px;
-  width: 1148px;
+  height: var(--usl-height);
+  width: var(--usl-width);
   background-color: var(--white);
 }
 
@@ -90,6 +90,7 @@
       align-items: center;
       justify-content: space-between;
       text-align: center;
+      transition: all ease-out .2s;
       & > * {
         width: 17%;
       }
@@ -101,10 +102,12 @@
       }
       input {
         text-align: center;
+        color: var(--text);
       }
     }
     .header-row {
       position: relative;
+      height: var(--row-height);
       font-family: var(--font-display);
       font-weight: 700;
       text-transform: uppercase;
@@ -169,8 +172,7 @@
   }
 }
 
-
- .footer {
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -199,4 +201,3 @@
     background-color: var(--primary);
   }
 }
-

@@ -3,7 +3,7 @@ import { LogoFL } from '../assets/LogoFL'
 
 import './invoiceFlex.scss'
 
-export const InvoiceTable = ({ printRef }) => {
+export const InvoiceTable = ({ printRef, rowCount, rowCollapsed }) => {
   const invDetail = {
     name: 'Michelle Smith',
     addressLOne: '1234 Placeholder wy.',
@@ -23,9 +23,13 @@ export const InvoiceTable = ({ printRef }) => {
     // console.log('qtyVal data type: ', typeof qtyVal)
   }, [])
 
-  const [numRows, setNumRows] = useState(4)
+  const [numRows, setNumRows] = useState([' '])
 
-  const rows = Array.from({ length: numRows }, () => ' ')
+  useEffect(() => {
+    setNumRows(Array.from({ length: rowCount }, () => ' '))
+  }, [rowCount])
+
+  const collapseState = rowCollapsed ? 'var(--row-height-collapsed)' : 'var(--row-height)'
 
   return (
     <main ref={printRef}>
@@ -104,9 +108,9 @@ export const InvoiceTable = ({ printRef }) => {
                 Total
               </span>
             </div>
-            {rows.map((row) => {
+            {numRows.map((row) => {
               return (
-                <div className='row'>
+                <div className='row' style={{ height: collapseState }}>
                   <input
                     type='text'
                     placeholder='1'
