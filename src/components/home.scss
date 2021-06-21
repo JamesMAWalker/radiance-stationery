@@ -57,7 +57,7 @@
     position: relative;
     margin: var(--vert-margin) 0;
     font-size: var(--text-xl);
-    font-weight: 200;
+    font-weight: 600;
     letter-spacing: var(--spaced);
     @media (max-width: 1024px) {
       margin-bottom: 15vh;
@@ -110,9 +110,20 @@
       width: 100%;
       background-color: var(--grey-fade-3);
     }
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      &:hover {
+        img {
+          transform: scale(1.1)
+        }
+      }
+    }
     img {
       object-fit: cover;
       object-position: center;
+      transition: all ease-out 1.5s;
     }
     h4 {
       font-size: var(--text-md);

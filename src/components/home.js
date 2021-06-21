@@ -19,27 +19,33 @@ export const Home = () => {
       <h4 className='options-header'>Choose a Template</h4>
       <ul className='options-list'>
         <NavLink to='invoice' className='option'>
-          <img
+          <div className="image-wrapper">
+            <img
             className="option-photo"
             src={imgLinks.invoice}
             alt='invoice document photo'
           />
+          </div>
           <h4>Invoice</h4>
         </NavLink>
         <NavLink to='letterhead' className='option'>
-          <img
+          <div className="image-wrapper">
+            <img
             className="option-photo"
             src={imgLinks.letter}
             alt='letterhead document photo'
           />
+          </div>
           <h4>Letter</h4>
         </NavLink>
         <NavLink to="/contract" onClick={(e) => e.preventDefault()} className='option' data-disabled>
-          <img
+          <div className="image-wrapper">
+            <img
             className="option-photo"
             src={imgLinks.contract}
             alt='contract document photo'
           />
+          </div>
           <h4>Contract</h4>
         </NavLink>
       </ul>
