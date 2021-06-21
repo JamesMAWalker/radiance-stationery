@@ -23,7 +23,7 @@
   --grey-light: rgb(174, 174, 174);
   --grey: rgb(154, 154, 154);
   --grey-dark: rgb(97, 97, 97);
-  --grey-fade-3: rgba(128, 128, 128, .3);
+  --grey-fade-3: rgba(128, 128, 128, 0.3);
   --white: #ffffff;
   --green: rgb(0, 137, 119);
   --green-fade-4: rgba(0, 137, 119, 0.4);
@@ -31,7 +31,6 @@
   --primary: #fffcec;
   --accent: #9c965e;
   --text: var(--black);
-  
 
   --normal: var(--grey);
   --warning: rgb(251, 171, 9);
@@ -63,15 +62,17 @@
   --row-height-collapsed: var(--space-3xl);
 
   // sizes
-  --size-btn-sm: 50px; 
-  --size-btn-md: 80px; 
-  --size-btn-lg: 120px; 
-
+  --size-btn-sm: 50px;
+  --size-btn-md: 80px;
+  --size-btn-lg: 120px;
 }
 
 html {
   font-size: 16px;
   color: var(--text);
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 button {

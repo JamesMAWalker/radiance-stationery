@@ -20,7 +20,7 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed }) => {
     //     .getAttribute('placeholder'),
     //   10
     // )
-    // console.log('qtyVal data type: ', typeof qtyVal)
+    // 
   }, [])
 
   const [numRows, setNumRows] = useState([' '])

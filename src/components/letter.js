@@ -5,11 +5,11 @@ import { LogoFL } from '../assets/LogoFL'
 import "./letter.scss"
 
 export const Letter = ({ printRef, pageCount }) => {
-  console.log('pageCount: ', pageCount);
+  
   
   const numberOfPages = Array.from({length: pageCount + 1}, () => " ")
-  console.log('pageCount: ', pageCount);
-  console.log('printRef: ', printRef);
+  
+  
 
   return (
     <main ref={printRef}>

@@ -19,7 +19,7 @@ import { Letter } from './components/letter'
 //     .then((res) => {
 //       return res.data.results
 //     })
-//     .catch((err) => console.error(err))
+//     .catch((err) => 
 // }
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
 
   // const [userData, setUserData] = useState([])
   // const [flattenedLocations, setFlattenedLocations] = useState([])
-  // console.log('userData: ', userData)
+  // 
 
   // const extractObjectKeys = (object) => {
   //   let objectKeys = []
@@ -101,7 +101,7 @@ function App() {
   // }, [])
 
   // useEffect(() => {
-  //   console.log(flattenedLocations.data);
+  //   
   // }, [flattenedLocations])
   const [isMobile, setIsMobile] = useState(false)
 

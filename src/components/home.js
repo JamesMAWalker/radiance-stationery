@@ -15,7 +15,7 @@ export const Home = () => {
   return (
     <div className='home-page'>
       <div className='logo'><LogoFL/></div>
-      <h1 className='header'>Stationery <br /> Suite</h1>
+      <h1 className='header'><span className="company-name">Radiance Photography</span> <br /> Stationery <br /> Suite</h1>
       <h4 className='options-header'>Choose a Template</h4>
       <ul className='options-list'>
         <NavLink to='invoice' className='option'>

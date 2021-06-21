@@ -68,21 +68,21 @@ export const DocumentEditor = ({
   }
 
   const addRemoveRows = (crement) => {
-    console.log('crement: ', crement);
+    
     let curNumRows = rowCount
-    console.log('maxRows: ', maxRows);
+    
     if (curNumRows <= 1 && crement === -1) {
-      console.log('rowCollapsed: ', rowCollapsed);
+      
       return
     }
     if (curNumRows >= maxRows && crement === 1) {
       setRowCollapsed(true)
-      console.log('rowCollapsed: ', rowCollapsed);
+      
       return
     }
     setRowCount(curNumRows + crement)
-    console.log('rowCollapsed: ', rowCollapsed);
-    console.log('rowCount: ', rowCount);
+    
+    
   }
 
 
