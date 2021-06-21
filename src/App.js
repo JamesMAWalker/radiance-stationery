@@ -1,5 +1,5 @@
 import './App.scss'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Route,
   Switch,
@@ -103,6 +103,12 @@ function App() {
   // useEffect(() => {
   //   console.log(flattenedLocations.data);
   // }, [flattenedLocations])
+  const [isMobile, setIsMobile] = useState(false)
+
+   useEffect(() => {
+     // set breakpoint for JS
+     setIsMobile(window.innerWidth <= 1148)
+   }, [])
 
   return (
     <div className='App'>
@@ -148,7 +154,7 @@ function App() {
             ({ name, path, Component, props }) => {
               return (
                 <Route key={name} path={path} exact>
-                  <DocumentEditor {...props}>
+                  <DocumentEditor isMobile={isMobile} {...props}>
                     <Component {...props} />
                   </DocumentEditor>
                 </Route>

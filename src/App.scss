@@ -8,21 +8,30 @@
   --font-display-sc: 'Cormorant SC', serif;
   --font-signature: 'Mrs Saint Delafield', cursive;
   --font-sans: 'Open Sans', sans-serif;
+  --font-home: 'Roboto Condensed', sans-serif;
 
   // font sizes
   --text-md: 18px;
   --text-lg: 22px;
+  --text-xl: 28px;
+  --text-2xl: 36px;
+  --text-3xl: 48px;
+  --text-vl: 52px;
 
   // colors
-  --primary: #fffcec;
-  --accent: #9c965e;
-  --white: #ffffff;
-  --text: #3b3b3b;
-
+  --black: #3b3b3b;
+  --grey-light: rgb(174, 174, 174);
   --grey: rgb(154, 154, 154);
+  --grey-dark: rgb(97, 97, 97);
   --grey-fade-3: rgba(128, 128, 128, .3);
+  --white: #ffffff;
   --green: rgb(0, 137, 119);
   --green-fade-4: rgba(0, 137, 119, 0.4);
+
+  --primary: #fffcec;
+  --accent: #9c965e;
+  --text: var(--black);
+  
 
   --normal: var(--grey);
   --warning: rgb(251, 171, 9);

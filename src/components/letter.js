@@ -27,7 +27,7 @@ export const Letter = ({ printRef, pageCount }) => {
                 placeholder='Dear Ms. Smith,'
               />
               <textArea
-                className='body'
+                className='letter__body'
                 style={{ resize: 'none' }}
               >
                 Lorem ipsum dolor sit amet, consectetur
@@ -71,12 +71,23 @@ export const Letter = ({ printRef, pageCount }) => {
                   className='closing'
                   placeholder='Sincerely,'
                 />
-                <div className='signature'>
+                <input
+                  className='signature'
+                  placeholder='Peyman Khazan,'
+                />
+                {/* <div className='signature'>
                   Peyman Khazan
-                </div>
+                </div> */}
                 <div className='printed-signature'>
-                  <h4>Peyman Khazan</h4>
-                  <p>Studio Director</p>
+                  {/* <h4>Peyman Khazan</h4> */}
+                  <input
+                    className="name"
+                    placeholder='Peyman Khazan,'
+                  />
+                  <input
+                    className="title"
+                    placeholder='Studio Director'
+                  />
                 </div>
               </div>
             </div>

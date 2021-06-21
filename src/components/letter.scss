@@ -63,19 +63,24 @@
         border: 1px solid #9c965e !important;
       }
     }
-    .body {
+    .letter__body {
       font: unset !important;
       border: none !important;
       outline: none !important;
       width: 100%;
+      background-color: rgba(144, 238, 144, 0.486);
       padding-bottom: 25px !important;
       text-align: left;
       font-size: 22px !important;
       line-height: 150% !important;
       min-height: 585px;
-      overflow: hidden;
+      height: auto;
+      overflow: visible;
       &::-webkit-resizer {
         // display: none;
+      }
+      &::-webkit-scrollbar {
+        display: none;
       }
       &:active,
       &:focus,
@@ -86,6 +91,10 @@
   }
   &__end {
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 
     .closing {
       margin: 25px 0;
@@ -110,15 +119,23 @@
       font-family: var(--font-signature);
     }
     .printed-signature {
-      h4 {
-        margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      input {
+        margin: var(--space-md) 0;
+      }
+      .name::placeholder {
+        font-family: var(--font-display);
         padding-bottom: 15px;
         color: #9c965e;
         font-size: 27px;
         font-weight: 200;
         letter-spacing: 1px;
       }
-      p {
+      .title::placeholder {
+        font-family: var(--font-display);
         margin: 0;
         font-size: 22px;
         letter-spacing: 1px;
