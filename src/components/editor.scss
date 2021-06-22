@@ -14,13 +14,12 @@
   @media (max-width: 1024px) {
     padding: 0;
     display: grid;
+    gap: 10vh;
     grid-template-columns: var(--usl-width);
-    grid-template-rows: calc(
-        var(--usl-height) + var(--vert-margin)
-      ) 50vh 20vh;
+    grid-template-rows: var(--usl-height) calc(var(--usl-height) * .3);
     flex-direction: column;
-    width: 120vw;
-    height: 180vh;
+    // width: 120vw;
+    // height: 180vh;
     background-color: lightgrey;
   }
 }
@@ -36,7 +35,7 @@
   background-size: cover !important;
   background-repeat: no-repeat !important;
   @media (max-width: 1024px) {
-    height: 100%;
+    display: none;
   }
 }
 
