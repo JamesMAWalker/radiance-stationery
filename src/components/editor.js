@@ -16,11 +16,15 @@ export const DocumentEditor = ({
   setRowCount,
   rowCollapsed,
   setRowCollapsed,
+  isDeposit,
+  setIsDeposit
 }) => {
+  // set content to print
   const toPrintRef = useRef(null)
   const handlePrint = useReactToPrint({
     content: () => toPrintRef.current,
   })
+
 
   // Letterhead functionality
   const [minPagesReached, setMinPagesReached] = useState(false)
@@ -36,11 +40,8 @@ export const DocumentEditor = ({
   }, [pageCount])
 
 
-
-
   // Invoice functionality
   const [maxRows, setMaxRows] = useState(rowCount)
-
   useEffect(() => {
     if (rowCollapsed) {
       setMaxRows(7)
@@ -68,30 +69,21 @@ export const DocumentEditor = ({
   }
 
   const addRemoveRows = (crement) => {
-    
     let curNumRows = rowCount
-    
     if (curNumRows <= 1 && crement === -1) {
-      
       return
     }
     if (curNumRows >= maxRows && crement === 1) {
       setRowCollapsed(true)
-      
       return
     }
     setRowCount(curNumRows + crement)
-    
-    
   }
-
 
   // Target child for printing
   const childrenWithProps = React.cloneElement(children, {
     printRef: toPrintRef,
   })
-
-
 
 
   return (
@@ -108,6 +100,11 @@ export const DocumentEditor = ({
         </h2>
         {docType === 'Invoice' && (
           <>
+            <button className="editor-btn deposit-btn" onClick={() => setIsDeposit(!isDeposit)}>{
+              isDeposit 
+                ? "Remove Deposit"
+                : "Add Deposit"
+            }</button>
             <button
               onClick={toggleRowCollapse}
               disabled={rowCount > maxRows || rowCount > 4}
@@ -165,7 +162,12 @@ export const DocumentEditor = ({
         <button
           onClick={handlePrint}
           id='generate-pdf'
-          className='editor-btn generate-btn main-btn, '
+          className={`
+            editor-btn 
+            generate-btn 
+            main-btn
+            ${docType === 'Letter' ? 'two-space' : ''} 
+          `}
         >
           Generate {docType}
         </button>

@@ -1,35 +1,62 @@
 import React, { useEffect, useState } from 'react'
 import { LogoFL } from '../assets/LogoFL'
+import { InvoiceRow } from './invoice-row';
 
 import './invoiceFlex.scss'
 
-export const InvoiceTable = ({ printRef, rowCount, rowCollapsed }) => {
-  const invDetail = {
-    name: 'Michelle Smith',
-    addressLOne: '1234 Placeholder wy.',
-    addressLTwo: 'Pleasanton, CA 12345',
-    number: '555 321 1234',
-  }
-  const paymentContent = `Cash, or check made payable to 
+// placeholder text
+const invDetail = {
+  name: 'Michelle Smith',
+  addressLOne: '1234 Placeholder wy.',
+  addressLTwo: 'Pleasanton, CA 12345',
+  number: '555 321 1234',
+}
+const paymentContent = `Cash, or check made payable to 
 “Radiance Photography Studio”.`
 
-  useEffect(() => {
-    // const qtyVal = parseInt(
-    //   document
-    //     .querySelector('.qty')
-    //     .getAttribute('placeholder'),
-    //   10
-    // )
-    // 
-  }, [])
 
+
+export const InvoiceTable = ({ printRef, rowCount, rowCollapsed, isDeposit }) => {
+  // row count and spacing 
   const [numRows, setNumRows] = useState([' '])
-
   useEffect(() => {
     setNumRows(Array.from({ length: rowCount }, () => ' '))
   }, [rowCount])
 
   const collapseState = rowCollapsed ? 'var(--row-height-collapsed)' : 'var(--row-height)'
+
+
+  // row value calculations
+  const [changingTotal, setChangingTotal] = useState(false)
+  const rowTotalCalc = (qty, price, discount="1") => {
+    const parsedPrice = `${price}`.replace('$', '')
+    const parsedDiscount = discount.replace('%', '')
+    const unroundedDiscount = (-1 * ((parsedDiscount * .01) - 1))
+    const discountFactor = unroundedDiscount.toFixed(4)
+    setChangingTotal(!changingTotal)
+    return (+qty * +parsedPrice) * discountFactor
+  }
+
+  // final calculations
+  const [subTotal, setSubTotal] = useState(1000)
+  const [deposit, setDeposit] = useState(200)
+  const [grandTotal, setGrandTotal] = useState(800)
+
+  const sumRowTotals = (totals) => {
+    const sumTotals = (curSum, curVal) => curSum + curVal
+    return totals.reduce(sumTotals)
+  }
+
+  useEffect(() => {
+    // get row totals from DOM and calculate sub/grand totals
+    const rowTotalsFromDOM = Array.from(
+      document.querySelectorAll('.row-total')
+    )
+    const currentTotalsArray = rowTotalsFromDOM.map((t) => parseInt(t.innerHTML.replace('$', ''), 10))
+    const summedRowTotals = sumRowTotals(currentTotalsArray)
+    setSubTotal(summedRowTotals)
+    setGrandTotal(summedRowTotals - deposit)
+  }, [numRows, rowCount, changingTotal, deposit])
 
   return (
     <main ref={printRef}>
@@ -108,37 +135,15 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed }) => {
                 Total
               </span>
             </div>
-            {numRows.map((row) => {
+            {numRows.map((row, idx) => {
+              // const rowQty = document.querySelector(`.qty${idx}`).getAttribute('placeholder')
+
               return (
-                <div className='row' style={{ height: collapseState }}>
-                  <input
-                    type='text'
-                    placeholder='1'
-                    className='qty'
-                    style={{ textAlign: 'left' }}
-                  />
-                  <input
-                    type='text'
-                    placeholder='Wedding Day Shoot'
-                    className='prod-serv'
-                  />
-                  <input
-                    type='text'
-                    placeholder='$1000'
-                    className='price'
-                  />
-                  <input
-                    type='text'
-                    placeholder={' '}
-                    className='discount'
-                  />
-                  <input
-                    type='text'
-                    placeholder='$1000'
-                    className='total'
-                    style={{ textAlign: 'right' }}
-                  />
-                </div>
+                <InvoiceRow
+                  idx={idx}
+                  rowTotal={rowTotalCalc}
+                  collapseState={collapseState}
+                />
               )
             })}
             <div className='row subtotal-row'>
@@ -150,21 +155,31 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed }) => {
                 style={{ textAlign: 'right' }}
                 className='subtotal-num'
               >
-                $5600
+                ${subTotal}
               </span>
             </div>
-            <div className='row deposit-row'>
-              <span className='empty'> </span>
-              <span className='empty'> </span>
-              <span className='subtotal'>DEPOSIT</span>
-              <span className='empty'> </span>
-              <span
-                style={{ textAlign: 'right' }}
-                className='subtotal-num'
-              >
-                $1000
-              </span>
-            </div>
+            {isDeposit && (
+              <div className='row deposit-row'>
+                <span className='empty'> </span>
+                <span className='empty'> </span>
+                <span className='subtotal'>DEPOSIT</span>
+                <span className='empty'> </span>
+                <input
+                  style={{ textAlign: 'right' }}
+                  className='subtotal-num'
+                  value={`- $${deposit}`}
+                  onChange={(e) => {
+                    const parsedDeposit =
+                      e.currentTarget.value
+                        .replace('$', '')
+                        .replace('-', '')
+                        .replace(' ', '')
+
+                    setDeposit(parsedDeposit)
+                  }}
+                />
+              </div>
+            )}
             <div className='row grandtotal-row'>
               <span className='empty'> </span>
               <span className='empty'> </span>
@@ -176,7 +191,7 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed }) => {
                 style={{ textAlign: 'right' }}
                 className='subtotal-num'
               >
-                $4600
+                ${grandTotal}
               </span>
             </div>
           </div>
