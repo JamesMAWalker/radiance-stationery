@@ -26,7 +26,7 @@ function App() {
   const [pageCount, setPageCount] = useState(0)
   const [rowCount, setRowCount] = useState(1)
   const [rowCollapsed, setRowCollapsed] = useState(false)
-
+  const [isDeposit, setIsDeposit] = useState(false)
   const templateRoutes = [
     {
       path: '/letterhead',
@@ -48,6 +48,8 @@ function App() {
         setRowCount,
         rowCollapsed,
         setRowCollapsed,
+        isDeposit,
+        setIsDeposit
       },
     },
   ]
