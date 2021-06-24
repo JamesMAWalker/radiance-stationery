@@ -9,9 +9,9 @@ import axios from 'axios'
 
 import { DocumentEditor } from './components/editor'
 import { Home } from './components/home'
-import { Invoice } from './components/invoice'
-import { InvoiceTable } from './components/invoiceFlex'
 import { Letter } from './components/letter'
+import { InvoiceTable } from './components/invoice'
+import { Receipt } from './components/receipt'
 
 // const getUsersData = () => {
 //   return axios
@@ -36,6 +36,20 @@ function App() {
         docType: 'Letter',
         pageCount,
         setPageCount,
+      },
+    },
+    {
+      path: '/receipt',
+      name: 'Receipt',
+      Component: Receipt,
+      props: {
+        docType: 'Receipt',
+        rowCount,
+        setRowCount,
+        rowCollapsed,
+        setRowCollapsed,
+        isDeposit,
+        setIsDeposit
       },
     },
     {

@@ -1,12 +1,16 @@
-.invoice-container {
+.receipt-container {
   position: relative;
   height: var(--usl-height);
   width: var(--usl-width);
   background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.invoice-top {
-  height: 573px;
+.receipt-top {
+  height: 458px;
   width: calc(100% - (2 * var(--side-margin)));
   padding: 0 var(--side-margin);
   background-color: var(--primary);
@@ -45,7 +49,7 @@
       padding: 0;
       letter-spacing: 1px;
     }
-    .dates {
+    .details {
       & > * {
         height: 40px;
         display: flex;
@@ -53,11 +57,14 @@
         align-items: flex-start;
         justify-content: flex-start;
       }
-      &__invoice {
+      &__payment {
         margin-bottom: var(--div-margin);
+        h4 {
+          text-transform: uppercase;
+        }
       }
     }
-    .invoice-detail {
+    .receipt-date {
       & > * {
         display: flex;
         flex-direction: column;
@@ -69,14 +76,14 @@
           padding-right: 1px;
         }
       }
-      &__invoicee {
-        margin-bottom: var(--div-margin);
-      }
+      h4 {
+        text-transform: uppercase;
+      } 
     }
   }
 }
 
-.invoice-body {
+.receipt-body {
   margin-top: var(--vert-margin);
   width: calc(1148px - (2 * var(--side-margin)));
   padding: 0 var(--side-margin);
@@ -158,19 +165,37 @@
   }
 }
 
-.invoice-close {
+.receipt-close {
+  margin-top: auto;
   width: calc(100% - (2 * var(--side-margin)));
   padding: 0 var(--side-margin);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 150px;
   &__header {
+    position: relative;
     font-family: var(--font-display);
+    color: var(--accent);
     font-weight: 700;
-    font-style: var(--text-lg);
+    font-size: var(--text-lg);
     letter-spacing: var(--sm-spaced);
-    text-transform: uppercase;
+    span {
+      position: absolute;
+      content: "";
+      top: calc(50% + 1px);
+      height: 0.5px;
+      width: 52px;
+      background-color: var(--accent);
+      &.left {
+        left: calc(-52px - var(--space-md));
+      }
+      &.right {
+        right: calc(-52px - var(--space-md));
+      }
+    }
+    
   }
   &__content {
     width: 325px;
@@ -194,7 +219,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   &__content {
     color: #272727;
     width: 950px;

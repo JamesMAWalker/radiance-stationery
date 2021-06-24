@@ -1,20 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import './invoiceFlex.scss';
+import './invoice.scss';
 
 export const InvoiceRow = ({idx, rowTotal, collapseState}) => {
   const discRef = useRef(null)
-  /*
-    US for qty
-    US for price
-    US for discount  
-
-    useStates are set with placeholder || value
-  */
+  
   const [rowQty, setRowQty] = useState(1)
   const [rowPrice, setRowPrice] = useState(1000)
   const [rowDiscount, setRowDiscount] = useState(" ")
   const [thisRowTotal, setThisRowTotal] = useState(1000)
+  
   useEffect(() => {
     setThisRowTotal(rowTotal(rowQty, rowPrice, rowDiscount))
   }, [rowQty, rowPrice, rowDiscount])

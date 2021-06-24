@@ -98,13 +98,15 @@ export const DocumentEditor = ({
         <h2 className='controls-header'>
           {docType} Controls
         </h2>
-        {docType === 'Invoice' && (
+        {(docType === 'Invoice' ||
+          docType === 'Receipt') && (
           <>
-            <button className="editor-btn deposit-btn" onClick={() => setIsDeposit(!isDeposit)}>{
-              isDeposit 
-                ? "Remove Deposit"
-                : "Add Deposit"
-            }</button>
+            <button
+              className='editor-btn deposit-btn'
+              onClick={() => setIsDeposit(!isDeposit)}
+            >
+              {isDeposit ? 'Remove Deposit' : 'Add Deposit'}
+            </button>
             <button
               onClick={toggleRowCollapse}
               disabled={rowCount > maxRows || rowCount > 4}

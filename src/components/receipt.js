@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { LogoFL } from '../assets/LogoFL'
-import { InvoiceRow } from './invoice-row';
+import { InvoiceRow } from './invoice-row'
 
-import './invoiceFlex.scss'
+import './receipt.scss'
 
 // placeholder text
 const invDetail = {
@@ -14,33 +14,38 @@ const invDetail = {
 const paymentContent = `Cash, or check made payable to 
 “Radiance Photography Studio”.`
 
-
-
-export const InvoiceTable = ({ printRef, rowCount, rowCollapsed, isDeposit }) => {
-  // row count and spacing 
+export const Receipt = ({
+  printRef,
+  rowCount,
+  rowCollapsed,
+  isDeposit,
+}) => {
+  // row count and spacing
   const [numRows, setNumRows] = useState([' '])
   useEffect(() => {
     setNumRows(Array.from({ length: rowCount }, () => ' '))
   }, [rowCount])
 
-  const collapseState = rowCollapsed ? 'var(--row-height-collapsed)' : 'var(--row-height)'
-
+  const collapseState = rowCollapsed
+    ? 'var(--row-height-collapsed)'
+    : 'var(--row-height)'
 
   // row value calculations
   const [changingTotal, setChangingTotal] = useState(false)
-  const rowTotalCalc = (qty, price, discount="1") => {
+  const rowTotalCalc = (qty, price, discount = '1') => {
     const parsedPrice = `${price}`.replace('$', '')
     const parsedDiscount = discount.replace('%', '')
-    const unroundedDiscount = (-1 * ((parsedDiscount * .01) - 1))
+    const unroundedDiscount =
+      -1 * (parsedDiscount * 0.01 - 1)
     const discountFactor = unroundedDiscount.toFixed(4)
     setChangingTotal(!changingTotal)
-    return (+qty * +parsedPrice) * discountFactor
+    return +qty * +parsedPrice * discountFactor
   }
 
   // final calculations
   const [subTotal, setSubTotal] = useState(1000)
   const [deposit, setDeposit] = useState(200)
-  const [grandTotal, setGrandTotal] = useState(800)
+  const [grandTotal, setGrandTotal] = useState(1000)
 
   const sumRowTotals = (totals) => {
     const sumTotals = (curSum, curVal) => curSum + curVal
@@ -52,35 +57,41 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed, isDeposit }) =>
     const rowTotalsFromDOM = Array.from(
       document.querySelectorAll('.row-total')
     )
-    const currentTotalsArray = rowTotalsFromDOM.map((t) => parseInt(t.innerHTML.replace('$', ''), 10))
+    const currentTotalsArray = rowTotalsFromDOM.map((t) =>
+      parseInt(t.innerHTML.replace('$', ''), 10)
+    )
     const summedRowTotals = sumRowTotals(currentTotalsArray)
     setSubTotal(summedRowTotals)
-    setGrandTotal(summedRowTotals - deposit)
-  }, [numRows, rowCount, changingTotal, deposit])
+    if (isDeposit) {
+      setGrandTotal(summedRowTotals - deposit)
+    } else {
+      setGrandTotal(summedRowTotals)
+    }
+  }, [numRows, rowCount, changingTotal, deposit, isDeposit])
 
   return (
     <main ref={printRef}>
-      <div className='invoice-container'>
-        <div className='invoice-top'>
-          <div className='invoice-top__header-area'>
-            <div className='invoice-top__logo-wrap'>
+      <div className='receipt-container'>
+        <div className='receipt-top'>
+          <div className='receipt-top__header-area'>
+            <div className='receipt-top__logo-wrap'>
               <LogoFL />
             </div>
-            <h1 className='invoice-top__header'>Invoice</h1>
+            <h1 className='receipt-top__header'>Receipt</h1>
           </div>
-          <div className='invoice-top__info-area'>
-            <div className='dates'>
-              <div className='dates__invoice'>
-                <h4>INVOICE DATE</h4>
-                <input placeholder='10.21.2020' />
+          <div className='receipt-top__info-area'>
+            <div className='details'>
+              <div className='details__payment'>
+                <h4>Payment For</h4>
+                <input placeholder='Invoice 00023455' />
               </div>
-              <div className='dates__due'>
+              {/* <div className='dates__due'>
                 <h4>DUE DATE</h4>
                 <input placeholder='11.1.2020' />
-              </div>
+              </div> */}
             </div>
-            <div className='invoice-detail'>
-              <div className='invoice-detail__invoicee'>
+            <div className='receipt-date'>
+              {/* <div className='invoice-detail__invoicee'>
                 <h4>INVOICE TO</h4>
                 <input
                   className='name'
@@ -102,20 +113,20 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed, isDeposit }) =>
                   type='text'
                   placeholder={invDetail.number}
                 />
-              </div>
-              <div className='invoice-detail__invoice-number'>
-                <h4>INVOICE No.</h4>
+              </div> */}
+              <div className='receipt-date__invoice-number'>
+                <h4>Date of Payment</h4>
                 <input
                   className='number'
                   type='text'
-                  placeholder='00023456'
+                  placeholder='11.1.2020'
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className='invoice-body'>
-          <div className='invoice-body__grid'>
+        <div className='receipt-body'>
+          <div className='receipt-body__grid'>
             <div className='row header-row'>
               <span
                 className='qty'
@@ -146,18 +157,6 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed, isDeposit }) =>
                 />
               )
             })}
-            <div className='row subtotal-row'>
-              <span className='empty'> </span>
-              <span className='empty'> </span>
-              <span className='subtotal'>SUBTOTAL</span>
-              <span className='empty'> </span>
-              <span
-                style={{ textAlign: 'right' }}
-                className='subtotal-num'
-              >
-                ${subTotal}
-              </span>
-            </div>
             {isDeposit && (
               <div className='row deposit-row'>
                 <span className='empty'> </span>
@@ -184,7 +183,7 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed, isDeposit }) =>
               <span className='empty'> </span>
               <span className='empty'> </span>
               <span className='grandtotal'>
-                GRAND TOTAL
+                AMOUNT PAID
               </span>
               <span className='empty'> </span>
               <span
@@ -196,14 +195,8 @@ export const InvoiceTable = ({ printRef, rowCount, rowCollapsed, isDeposit }) =>
             </div>
           </div>
         </div>
-        <div className='invoice-close'>
-          <h3 className='invoice-close__header'>
-            Payment Methods
-          </h3>
-          <textarea
-            className='invoice-close__content'
-            placeholder={paymentContent}
-          />
+        <div className='receipt-close'>
+          <h4 className='receipt-close__header'><span className="left"/> Thank You <span className="right"/></h4>
         </div>
         <footer className='footer'>
           <div className='footer__content'>
