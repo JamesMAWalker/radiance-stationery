@@ -54,9 +54,9 @@ export const Home = () => {
       <h4 className='options-header'>Choose a Template</h4>
       <ul className='options-list'>
         {templateInfo.map((tmpl) => {
-          const dataDisabled = tmpl.name === "Contract" ? `data-disabled` : null
+          // const dataDisabled = tmpl.name === "Contract" ? `` : null
           return (
-            <NavLink to={tmpl.path} className='option' data-disabled={dataDisabled}>
+            <NavLink to={tmpl.path} className='option' >
               <div className='image-wrapper'>
                 <img
                   className='option-photo'

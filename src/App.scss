@@ -13,7 +13,9 @@
   // font sizes
   --text-md: 18px;
   --text-lg: 20px;
+  --text-lg-plus: 22px;
   --text-xl: 28px;
+  --text-xl-plus: 30px;
   --text-2xl: 36px;
   --text-3xl: 48px;
   --text-vl: 52px;
@@ -43,9 +45,12 @@
   --x-spaced: 5px;
 
   // document spacing
+  --content-margin: 140px;
   --side-margin: 120px;
   --vert-margin: 70px;
+  --half-vert-margin: 35px;
   --div-margin: 30px;
+  --div-margin-plus: 45px;
 
   // utility spacing
   --space-xs: 2px;
@@ -56,6 +61,12 @@
   --space-2xl: 24px;
   --space-3xl: 48px;
   --space-4xl: 64px;
+  --space-5xl: 80px;
+  --space-6xl: 96px;
+  --text-block-xs: 115px;
+  --text-block-sm: 140px;
+  --text-block: 180px;
+  --text-block-lg: 200px;
 
   // invoice specific spacing
   --row-height: var(--space-4xl);
@@ -63,8 +74,12 @@
 
   // sizes
   --size-btn-sm: 50px;
+  --size-btn-sm-plus: 55px;
+  --size-btn-ms: 65px;
   --size-btn-md: 80px;
+  --size-btn-ml: 100px;
   --size-btn-lg: 120px;
+  --size-btn-xl: 150px;
 }
 
 html {
@@ -93,6 +108,15 @@ input {
   &:focus,
   &:focus-within {
     border: 1px solid #9c965e !important;
+  }
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+textarea {
+  &::-webkit-scrollbar {
+    display: none !important;
   }
 }
 

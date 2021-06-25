@@ -85,7 +85,6 @@ export const DocumentEditor = ({
     printRef: toPrintRef,
   })
 
-
   return (
     <div className='editor-container'>
       <div className='editor-bg'></div>
@@ -138,7 +137,7 @@ export const DocumentEditor = ({
             </div>
           </>
         )}
-        {docType === 'Letter' && (
+        {(docType === 'Letter') && (
           <div className='page-count'>
             {!isMobile && <p>current number of pages</p>}
             <div className='page-count__actions'>

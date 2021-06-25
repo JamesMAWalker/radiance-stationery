@@ -12,6 +12,7 @@ import { Home } from './components/home'
 import { Letter } from './components/letter'
 import { InvoiceTable } from './components/invoice'
 import { Receipt } from './components/receipt'
+import { Contract } from './components/contract';
 
 // const getUsersData = () => {
 //   return axios
@@ -64,6 +65,14 @@ function App() {
         setRowCollapsed,
         isDeposit,
         setIsDeposit
+      },
+    },
+    {
+      path: '/contract',
+      name: 'Contract',
+      Component: Contract,
+      props: {
+        docType: 'Contract',
       },
     },
   ]
