@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { v4 as uuid } from 'uuid';
 
 import { LogoFL } from '../assets/LogoFL'
 import { LogoSmall } from '../assets/LogoSmall'
@@ -6,7 +7,7 @@ import { ContractWrapper } from './contract-wrapper'
 
 import './contract.scss'
 
-const packageFeatures = [
+const initialPackageItems = [
   `One professional photographer.`,
   `One professional videographer.`,
   `All images and video provided to client via customer supplied hard drive.`,
@@ -58,7 +59,22 @@ const witnessStatement = [
   `In witness thereof, the parties hereto have executed and approved all five (5) pages of this Agreement as of the date set out below. `,
 ]
 
-export const Contract = ({ printRef }) => {
+export const Contract = ({ printRef, packageItems, setPackageItems }) => {
+  useEffect(() => {
+    setPackageItems([...initialPackageItems])
+  }, [])
+
+  const changeFeatureContent = (el, index) => {
+    const tempItems = [...packageItems]
+    tempItems[index] = el 
+    setPackageItems([...tempItems])
+  }
+
+  useEffect(() => {
+    console.log(packageItems);
+  }, [packageItems])
+  
+  
   return (
     <main ref={printRef}>
       <div
@@ -76,16 +92,34 @@ export const Contract = ({ printRef }) => {
           </div>
           <div className='contract-top__client'>
             <h2 className='contract-top__client-header'>
-              Client
+              Client(s)
             </h2>
-            <div className='contract-top__client-info'>
+            <div className='contract-top__client-info client-1'>
               <input
                 className='client-name'
-                placeholder='John and Jane Placeholder'
+                placeholder='Jane Placeholder'
               />
               <input
                 className='client-number'
                 placeholder='555 . 321 . 1234'
+              />
+              <input
+                className='client-address-1'
+                placeholder='123 Placeholder Wy.'
+              />
+              <input
+                className='client-address-2'
+                placeholder='Pleasanton, CA 54321'
+              />
+            </div>
+            <div className='contract-top__client-info client-2'>
+              <input
+                className='client-name'
+                placeholder='John Placeholder'
+              />
+              <input
+                className='client-number'
+                placeholder='555 . 123 . 4321'
               />
               <input
                 className='client-address-1'
@@ -148,47 +182,6 @@ export const Contract = ({ printRef }) => {
               Client and Radiance.
             </textarea>
           </div>
-          <div className='package'>
-            <h2 className='package__header'>
-              Products & Services Included
-            </h2>
-            <h4 className='package__subheader'>
-              <span>
-                <LogoSmall />
-              </span>
-              <input
-                type='text'
-                placeholder='Red Label Package'
-                className='package-level'
-              />
-            </h4>
-            <div className='package__details'>
-              <div className='package__row'>
-                <span>▪</span>
-                <input
-                  type='text'
-                  placeholder={`${packageFeatures[0]}`}
-                  className='feature'
-                />
-              </div>
-              <div className='package__row'>
-                <span>▪</span>
-                <input
-                  type='text'
-                  placeholder={`${packageFeatures[1]}`}
-                  className='feature'
-                />
-              </div>
-              <div className='package__row'>
-                <span>▪</span>
-                <input
-                  type='text'
-                  placeholder={`${packageFeatures[2]}`}
-                  className='feature'
-                />
-              </div>
-            </div>
-          </div>
         </div>
         <footer className='footer-letter'>
           <div className='footer-letter__content'>
@@ -207,6 +200,38 @@ export const Contract = ({ printRef }) => {
         </footer>
       </div>
       <ContractWrapper>
+        <div className='package'>
+            <h2 className='package__header'>
+              Products & Services Included
+            </h2>
+            <h4 className='package__subheader'>
+              <span>
+                <LogoSmall />
+              </span>
+              <input
+                type='text'
+                placeholder='Red Label Package'
+                className='package-level'
+              />
+            </h4>
+            <div className='package__details'>
+              {packageItems.map((item, idx) => {
+                return (
+                  <div key={uuid()} className='package__row'>
+                    <span>▪</span>
+                    <input
+                      type='text'
+                      placeholder={item}
+                      className='feature'
+                      onBlur={(e) => changeFeatureContent(e.target.value, idx)}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+      </ContractWrapper>
+      <ContractWrapper>
         <div className='terms'>
           <h2 className='terms__header'>
             Terms & Conditions
@@ -214,10 +239,19 @@ export const Contract = ({ printRef }) => {
           <div className='terms-container'>
             {termsConditions.map((tc, idx) => {
               let inputHeight
-              if (idx === 1) inputHeight = { height: "var(--size-btn-ms)" }
-              if (idx === 2) inputHeight = { height: "var(--size-btn-sm-plus)" }
-              if (idx === 3) inputHeight = { height: "var(--size-btn-ml)" }
-              
+              if (idx === 1)
+                inputHeight = {
+                  height: 'var(--size-btn-ms)',
+                }
+              if (idx === 2)
+                inputHeight = {
+                  height: 'var(--size-btn-sm-plus)',
+                }
+              if (idx === 3)
+                inputHeight = {
+                  height: 'var(--size-btn-ml)',
+                }
+
               return (
                 <div className='terms-container__row'>
                   <span>▪</span>
@@ -250,11 +284,17 @@ export const Contract = ({ printRef }) => {
                 height: 'var(--size-btn-sm)',
               }
               // if (idx === 2 || idx === 1) inputHeight = { height: "var(--size-btn-sm)" }
-              if (idx === 3) inputHeight = { height: "var(--size-btn-ml)" }
+              if (idx === 3)
+                inputHeight = {
+                  height: 'var(--size-btn-ml)',
+                }
               return (
                 <div className='terms-container__row'>
                   <span>▪</span>
-                  <textarea className='term-text' style={inputHeight}>
+                  <textarea
+                    className='term-text'
+                    style={inputHeight}
+                  >
                     {pc}
                   </textarea>
                 </div>
@@ -275,7 +315,7 @@ export const Contract = ({ printRef }) => {
                   <span>▪</span>
                   <textarea
                     className='term-text'
-                    style={{ height: "var(--size-btn-md)" }}
+                    style={{ height: 'var(--size-btn-md)' }}
                   >
                     {rp}
                   </textarea>
@@ -284,13 +324,17 @@ export const Contract = ({ printRef }) => {
             })}
           </div>
         </div>
-        <div className='terms' style={{ marginTop: "var(--half-vert-margin)" }}>
+        <div
+          className='terms'
+          style={{ marginTop: 'var(--half-vert-margin)' }}
+        >
           <h2 className='terms__header'>Client Release</h2>
           <div className='terms-container'>
             {clientRelease.map((cr, idx) => {
-              let inputHeight = idx === 0
-                ? { height: "var(--size-btn-lg)" }
-                : { height: "var(--size-btn-xl)" }
+              let inputHeight =
+                idx === 0
+                  ? { height: 'var(--size-btn-lg)' }
+                  : { height: 'var(--size-btn-xl)' }
 
               return (
                 <div className='terms-container__row'>
@@ -371,7 +415,10 @@ export const Contract = ({ printRef }) => {
                       {gp}
                     </textarea>
                   </div>
-                  <textarea className='term-text bold' style={{ width: "750px" }}>
+                  <textarea
+                    className='term-text bold'
+                    style={{ width: '750px' }}
+                  >
                     {witnessStatement[0]}
                   </textarea>
                 </>

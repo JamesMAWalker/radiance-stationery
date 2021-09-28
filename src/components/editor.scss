@@ -116,6 +116,11 @@
       }
     }
   }
+  .button-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   .rows-info {
     width: 55%;
     height: var(--size-btn-md);
@@ -137,6 +142,9 @@
     margin-bottom: var(--space-lg);
     transition: all 0.4s;
     text-transform: lowercase;
+    &.add { 
+      margin-right: var(--space-2xl);
+    }
     &:active,
     &:focus,
     &:focus-within {
@@ -242,5 +250,11 @@
         font-size: var(--text-2xl);
       }
     }
+  }
+}
+.add-features {
+  @media(max-width: 1024px) {
+    margin: 0 30vw;
+    width: 100vw;
   }
 }

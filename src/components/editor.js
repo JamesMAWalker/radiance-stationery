@@ -17,7 +17,9 @@ export const DocumentEditor = ({
   rowCollapsed,
   setRowCollapsed,
   isDeposit,
-  setIsDeposit
+  setIsDeposit,
+  packageItems,
+  setPackageItems,
 }) => {
   // set content to print
   const toPrintRef = useRef(null)
@@ -25,9 +27,9 @@ export const DocumentEditor = ({
     content: () => toPrintRef.current,
   })
 
-
   // Letterhead functionality
-  const [minPagesReached, setMinPagesReached] = useState(false)
+  const [minPagesReached, setMinPagesReached] =
+    useState(false)
   const addRemovePages = (operator) => {
     if (operator === -1 && pageCount <= 0) return
 
@@ -38,7 +40,6 @@ export const DocumentEditor = ({
   useEffect(() => {
     setMinPagesReached(pageCount < 1)
   }, [pageCount])
-
 
   // Invoice functionality
   const [maxRows, setMaxRows] = useState(rowCount)
@@ -61,7 +62,10 @@ export const DocumentEditor = ({
   const maxIndication = () => {
     if (maxRows - rowCount > 1) {
       return 'var(--normal)'
-    } else if (maxRows - rowCount === 1 || (maxRows === rowCount && !rowCollapsed)) {
+    } else if (
+      maxRows - rowCount === 1 ||
+      (maxRows === rowCount && !rowCollapsed)
+    ) {
       return 'var(--warning)'
     } else if (maxRows <= rowCount) {
       return 'var(--alert)'
@@ -78,6 +82,19 @@ export const DocumentEditor = ({
       return
     }
     setRowCount(curNumRows + crement)
+  }
+
+  const addRemovePackageItem = (crement) => {
+    if (crement === 1) {
+      setPackageItems([
+        ...packageItems,
+        'New package inclusion...',
+      ])
+    } else {
+      setPackageItems(
+        packageItems.slice(0, [packageItems.length - 1])
+      )
+    }
   }
 
   // Target child for printing
@@ -137,7 +154,7 @@ export const DocumentEditor = ({
             </div>
           </>
         )}
-        {(docType === 'Letter') && (
+        {docType === 'Letter' && (
           <div className='page-count'>
             {!isMobile && <p>current number of pages</p>}
             <div className='page-count__actions'>
@@ -156,6 +173,27 @@ export const DocumentEditor = ({
                 disabled={pageCount >= 10}
               >
                 +
+              </button>
+            </div>
+          </div>
+        )}
+        {docType === 'Contract' && (
+          <div className='add-features'>
+            <h3>Add/Remove Package Inclusions</h3>
+            <div className='button-wrap'>
+              <button
+                className='editor-btn add'
+                onClick={() => addRemovePackageItem(1)}
+                disabled={packageItems.length > 12}
+              >
+                +
+              </button>
+              <button
+                className='editor-btn remove'
+                onClick={() => addRemovePackageItem(-1)}
+                disabled={packageItems.length < 2}
+              >
+                -
               </button>
             </div>
           </div>

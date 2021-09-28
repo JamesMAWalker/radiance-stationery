@@ -23,7 +23,7 @@
 }
 
 .contract-top {
-  height: 526px;
+  height: 597px;
   width: calc(var(--usl-width) - (2 * var(--side-margin)));
   padding: 0 var(--side-margin);
   background-color: var(--primary);
@@ -45,6 +45,7 @@
   }
   &__client {
     padding-top: var(--side-margin);
+    padding-top: var(--space-5xl);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -57,17 +58,23 @@
     }
     &-info {
       display: grid;
-      gap: var(--space-md);
+      gap: var(--space-sm);
       grid-template-rows: repeat(
         2,
         var(--half-vert-margin)
       );
-      grid-template-columns: repeat(2, 345px);
+      grid-template-columns: 525px 345px;
       grid-template-areas:
         'name addr1'
         'num  addr2';
       align-items: center;
       justify-content: flex-start;
+      &.client-1 {
+        margin-top: var(--space-xl);
+      }
+      &.client-2 {
+        margin-top: var(--space-xl);
+      }
       input::placeholder,
       input {
         font-family: var(--font-display) !important;
@@ -76,6 +83,7 @@
       }
       .client-name {
         grid-area: name;
+        font-weight: 600;
       }
       .client-number {
         grid-area: num;
@@ -199,7 +207,7 @@
     }
   }
   &__details {
-    height: var(--side-margin);
+    // height: var(--side-margin);
     margin-top: var(--div-margin);
     display: flex;
     flex-direction: column;
@@ -207,6 +215,7 @@
     justify-content: space-between;
   }
   &__row {
+    margin-bottom: var(--div-margin);
     display: flex;
     align-items: center;
     justify-content: flex-start;
