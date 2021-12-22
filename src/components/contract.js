@@ -7,6 +7,30 @@ import { ContractWrapper } from './contract-wrapper'
 
 import './contract.scss'
 
+const eventDetails = [
+  {
+    label: 'name',
+    placeholder: 'Placeholder Event',
+  },
+  {
+    label: 'date',
+    placeholder: 'July 27th, 2021',
+  },
+  {
+    label: 'guests',
+    placeholder: 'approx. 150 persons',
+  },
+  {
+    label: 'session',
+    placeholder: '9:30am - 3:00pm',
+  },
+  {
+    label: 'location',
+    placeholder:
+      'Griffith Observatory:  2800 E Observatory Rd, Los Angeles, CA 90027',
+  },
+]
+
 const initialPackageItems = [
   `One professional photographer.`,
   `One professional videographer.`,
@@ -136,7 +160,34 @@ export const Contract = ({ printRef, packageItems, setPackageItems }) => {
           <div className='event'>
             <h2 className='event__header'>Event</h2>
             <div className='event__info'>
-              <div className='event__info-row'>
+              {eventDetails.map(det => {
+                const emph = det.label === 'session' ? 'stressed' : ''
+
+                return (
+                  <div
+                    className={`event__info-row ${det.label}`}
+                    style={{ gridArea: `${det.label}` }}
+                  >
+                    <span className='label'>
+                      {det.label}:
+                    </span>
+                    {det.label === 'location' ? (
+                      <textarea
+                        type='text'
+                        className='event-input location-text'
+                        placeholder={det.placeholder}
+                      />
+                    ) : (
+                      <input
+                        type='text'
+                        className={`event-input ${emph}`}
+                        placeholder={det.placeholder}
+                      />
+                    )}
+                  </div>
+                )
+              })}
+              {/* <div className='event__info-row name'>
                 <span className='label'>name:</span>
                 <input
                   type='text'
@@ -144,7 +195,7 @@ export const Contract = ({ printRef, packageItems, setPackageItems }) => {
                   placeholder='Placeholder Event'
                 />
               </div>
-              <div className='event__info-row'>
+              <div className='event__info-row date'>
                 <span className='label'>date:</span>
                 <input
                   type='text'
@@ -152,7 +203,7 @@ export const Contract = ({ printRef, packageItems, setPackageItems }) => {
                   placeholder='July 27th, 2021'
                 />
               </div>
-              <div className='event__info-row'>
+              <div className='event__info-row guests'>
                 <span className='label'>guests:</span>
                 <input
                   type='text'
@@ -160,7 +211,7 @@ export const Contract = ({ printRef, packageItems, setPackageItems }) => {
                   placeholder='100-150 persons'
                 />
               </div>
-              <div className='event__info-row'>
+              <div className='event__info-row sess'>
                 <span className='label stressed'>
                   session:
                 </span>
@@ -169,7 +220,7 @@ export const Contract = ({ printRef, packageItems, setPackageItems }) => {
                   className='event-input stressed'
                   placeholder='9:30am - 3:00pm'
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className='proviso main'>

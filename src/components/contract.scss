@@ -109,6 +109,16 @@
     height: var(--text-block-sm);
     width: 100%;
     display: flex;
+    display: grid;
+    grid-gap: var(--space-sm) var(--space-3xl);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 525px 345px;
+    grid-template-areas: 
+      "name    location"
+      "date    location"
+      "guests  location"
+      "session location"
+    ;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
@@ -117,6 +127,21 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    &.location {
+      flex-direction: column;
+      align-items: flex-start;
+      textarea{
+        transform: translateY(var(--space-md));
+        width: 100%;
+        height: calc(var(--text-block-sm) - (var(--space-lg) + 26px));
+        border: none;
+        outline: none;
+        resize: none;
+        &:focus {
+          border: 1px solid var(--accent);
+        }
+      }
+    }
     .label {
       min-width: var(--side-margin);
       text-align: left;
@@ -135,6 +160,8 @@
       width: 700px;
       &.stressed::placeholder {
         color: var(--accent) !important;
+        font-weight: bold;
+        font-size: var(--text-lg-plus);
       }
     }
   }
@@ -231,7 +258,7 @@
       color: var(--text);
       font-weight: 600;
     }
-    input::placeholder, 
+    input::placeholder,
     input {
       font-family: var(--font-display);
       font-size: va(--text-lg);
@@ -407,7 +434,6 @@
     }
   }
 }
-
 
 .footer-letter {
   position: absolute;
